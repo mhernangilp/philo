@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	n_philo = ft_atoi(argv[1]);
-	philos = initialize_philos(n_philo);
+	philos = initialize_philos(n_philo, argv);
 	if (!philos)
 		return (2);
 	if (create_threads(philos, n_philo))

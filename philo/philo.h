@@ -5,6 +5,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 typedef enum e_dead
 {
@@ -21,6 +22,11 @@ typedef enum e_fork
 typedef struct s_common
 {
 	e_dead		dead;
+	int		time_to_die;
+	int		time_to_eat;
+	int		time_to_sleep;
+	int		n_times_to_eat;
+	size_t		start_time;
 	pthread_mutex_t	fork_mutex;
 	pthread_mutex_t	die_mutex;
 	pthread_mutex_t	write_mutex;
@@ -30,6 +36,7 @@ typedef struct s_philo
 {
 	int		id;
 	pthread_t	thread;
+	int		n_eaten;
 	e_fork		r_fork;
 	e_fork		*l_fork;
 	t_common	*common;
@@ -39,7 +46,7 @@ typedef struct s_philo
 int	parse(int argc, char **argv);
 
 //initialize.c
-t_philo	*initialize_philos(int n_philo);
+t_philo	*initialize_philos(int n_philo, char **argv);
 
 //start.c
 void	*start(void *arg);
