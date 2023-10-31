@@ -18,22 +18,33 @@ typedef enum e_fork
 	USED
 }	e_fork;
 
+typedef struct s_common
+{
+	e_dead		dead;
+	pthread_mutex_t	fork_mutex;
+	pthread_mutex_t	die_mutex;
+	pthread_mutex_t	write_mutex;
+}	t_common;
+
 typedef struct s_philo
 {
 	int		id;
-	e_dead		*dead;
-	e_fork		*r_fork;
+	pthread_t	thread;
+	e_fork		r_fork;
 	e_fork		*l_fork;
-	pthread_mutex_t	*fork_mutex;
+	t_common	*common;
 }	t_philo;
 
 //parse.c
 int	parse(int argc, char **argv);
 
-//utils.c
-int	ft_atoi(const char *str);
+//initialize.c
+t_philo	*initialize_philos(int n_philo);
 
 //start.c
-void	*start();
+void	*start(void *arg);
+
+//utils.c
+int	ft_atoi(const char *str);
 
 #endif

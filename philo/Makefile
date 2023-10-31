@@ -1,10 +1,10 @@
 NAME = philo
 
-SRCS = src/main.c src/parse.c src/utils.c src/start.c
+SRCS = src/main.c src/parse.c src/utils.c src/start.c src/initialize.c
 
 INCLUDE = ./philo.h
 
-CC = gcc
+CC = gcc -pthread
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
