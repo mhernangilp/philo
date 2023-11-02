@@ -26,7 +26,7 @@ typedef struct s_common
 	int		time_to_eat;
 	int		time_to_sleep;
 	int		n_times_to_eat;
-	size_t		start_time;
+	long int	start_time;
 	pthread_mutex_t	fork_mutex;
 	pthread_mutex_t	die_mutex;
 	pthread_mutex_t	write_mutex;
@@ -37,21 +37,30 @@ typedef struct s_philo
 	int		id;
 	pthread_t	thread;
 	int		n_eaten;
+	int		ms_eaten;
 	e_fork		r_fork;
 	e_fork		*l_fork;
 	t_common	*common;
 }	t_philo;
 
 //parse.c
-int	parse(int argc, char **argv);
+int		parse(int argc, char **argv);
 
 //initialize.c
-t_philo	*initialize_philos(int n_philo, char **argv);
+t_philo		*initialize_philos(int n_philo, char **argv);
 
 //start.c
-void	*start(void *arg);
+void		*start(void *arg);
+
+//activites.c
+void	ph_eat(t_philo *philo);
+void	ph_sleep(t_philo *philo);
+void	ph_think(t_philo *philo);
+void	check_death(t_philo *philo);
+int	dead(t_philo *philo);
 
 //utils.c
-int	ft_atoi(const char *str);
+long int	get_time();
+int		ft_atoi(const char *str);
 
 #endif

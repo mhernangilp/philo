@@ -20,6 +20,7 @@ t_philo	*initialize_philos(int n_philo, char **argv)
 	{
 		philos[i].id = i + 1;
 		philos[i].n_eaten = 0;
+		philos[i].ms_eaten = 0;
 		philos[i].common = common;
 		philos[i].r_fork = FREE;
 		if (i && i != n_philo - 1)
@@ -33,7 +34,6 @@ t_philo	*initialize_philos(int n_philo, char **argv)
 static t_common	*initialize_common(char **argv)
 {
 	t_common	*common;
-	struct timeval	time;
 
 	common = (t_common *)malloc(sizeof(t_common));
 	if (!common)
@@ -42,9 +42,9 @@ static t_common	*initialize_common(char **argv)
 	common -> time_to_die = ft_atoi(argv[2]);
 	common -> time_to_eat = ft_atoi(argv[3]);
 	common -> time_to_sleep = ft_atoi(argv[4]);
-	if (gettimeofday(&time, NULL))
+	common -> start_time = get_time();
+	if (common -> start_time == -1)
 		return (NULL);
-	common -> start_time = time.tv_sec * 1000 + time.tv_usec; 
 	if (argv[5])
 		common -> n_times_to_eat = ft_atoi(argv[5]);
 	else
