@@ -1,11 +1,14 @@
 #include "../philo.h"
 #include <stddef.h>
+#include <unistd.h>
 
 void	*start(void *arg)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	if (philo -> id % 2 == 0)
+		usleep(500);
 	while (!dead(philo)) // && !he terminado de comer
 	{
 		//como
