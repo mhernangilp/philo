@@ -15,7 +15,7 @@ void	ph_eat(t_philo *philo)
 		printf("%ld %d has taken a fork\n", get_time() - start_time,
 			philo -> id);
 		philo -> r_fork = USED;
-		philo -> l_fork = USED;
+		*philo -> l_fork = USED;
 		printf("%ld %d is eating\n", get_time() - start_time,
 			philo -> id);
 		pthread_mutex_unlock(&philo -> common -> write_mutex);
