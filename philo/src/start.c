@@ -8,7 +8,10 @@ void	*start(void *arg)
 
 	philo = (t_philo *)arg;
 	if (philo -> id % 2 == 0)
+	{
 		usleep(500);
+		ph_think(philo);
+	}
 	while (!dead(philo)) // && !he terminado de comer
 	{
 		//como

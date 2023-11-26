@@ -26,17 +26,18 @@ typedef struct s_common
 	int		time_to_eat;
 	int		time_to_sleep;
 	int		n_times_to_eat;
+	int		*n_eaten;
 	long int	start_time;
 	pthread_mutex_t	fork_mutex;
 	pthread_mutex_t	die_mutex;
 	pthread_mutex_t	write_mutex;
+	pthread_mutex_t	n_times_mutex;
 }	t_common;
 
 typedef struct s_philo
 {
 	int		id;
 	pthread_t	thread;
-	int		n_eaten;
 	int		ms_eaten;
 	e_fork		r_fork;
 	e_fork		*l_fork;
@@ -60,6 +61,8 @@ void	check_death(t_philo *philo);
 int	dead(t_philo *philo);
 
 //utils.c
+void		check_full(t_philo *philo);
+int		is_fork_free(t_philo *philo);
 long int	get_time();
 int		ft_atoi(const char *str);
 
