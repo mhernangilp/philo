@@ -23,10 +23,10 @@ t_philo	*initialize_philos(int n_philo, char **argv)
 		philos[i].ms_eaten = 0;
 		philos[i].common = common;
 		philos[i].r_fork = FREE;
-		if (i && i != n_philo - 1)
-			philos[i].l_fork = &philos[i - 1].r_fork;
-		if (i == n_philo - 1)
-			philos[0].l_fork = &philos[i].r_fork;
+		if (i != n_philo - 1)
+			philos[i].l_fork = &philos[i + 1].r_fork;
+		else
+			philos[i].l_fork = &philos[0].r_fork;
 	}
 	return (philos);
 }
