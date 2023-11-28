@@ -7,7 +7,8 @@ void	*start(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	if (philo -> id % 2 == 0)
+	if (philo -> id % 2 == 0 || (philo -> common -> n_philo % 2 == 1
+		&& philo -> id == 1))
 	{
 		usleep(500);
 		ph_think(philo);
@@ -15,11 +16,14 @@ void	*start(void *arg)
 	while (!dead(philo)) // && !he terminado de comer
 	{
 		//como
-		ph_eat(philo);
+		if (!dead(philo))
+			ph_eat(philo);
 		//duermo
-		ph_sleep(philo);
+		if (!dead(philo))
+			ph_sleep(philo);
 		//pienso
-		ph_think(philo);
+		if (!dead(philo))
+			ph_think(philo);
 	}
 	return (NULL);
 }

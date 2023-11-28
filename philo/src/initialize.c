@@ -45,6 +45,7 @@ static t_common	*initialize_common(char **argv, int n_philo)
 	common -> n_eaten = (int *)malloc((n_philo + 1)* sizeof(int));
 	common -> n_eaten[n_philo] = -1;
 	common -> start_time = get_time();
+	common -> n_philo = n_philo;
 	if (common -> start_time == -1)
 		return (NULL);
 	if (argv[5])

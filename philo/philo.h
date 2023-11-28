@@ -28,6 +28,7 @@ typedef struct s_common
 	int		n_times_to_eat;
 	int		*n_eaten;
 	long int	start_time;
+	int		n_philo;
 	pthread_mutex_t	fork_mutex;
 	pthread_mutex_t	die_mutex;
 	pthread_mutex_t	write_mutex;
