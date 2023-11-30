@@ -6,7 +6,7 @@ INCLUDE = ./philo.h
 
 CC = gcc -pthread
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g3
 
 %.o: %.c
 	${CC} ${CFLAGS} -pthread -c $< -o $@
@@ -16,7 +16,7 @@ OBJS = ${SRCS:.c=.o}
 all: ${NAME}
 
 ${NAME}: ${OBJS} ${INCLUDE}
-	${CC} ${OBJS} -o ${NAME}
+	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
 
 clean:
 	${RM} ${OBJS}

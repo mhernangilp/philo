@@ -23,15 +23,16 @@ void	*start(void *arg)
 		usleep(500);
 		ph_think(philo, 1);
 	}
-	while (!dead(philo)) // && !he terminado de comer
+	else
 	{
-		//como
+		pthread_mutex_lock(&philo -> common -> fork_mutex);
+	}
+	while (!dead(philo))
+	{
 		if (!dead(philo))
 			ph_eat(philo);
-		//duermo
 		if (!dead(philo))
 			ph_sleep(philo);
-		//pienso
 		if (!dead(philo))
 			ph_think(philo, 0);
 	}

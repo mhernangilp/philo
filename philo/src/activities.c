@@ -121,8 +121,8 @@ static int	dead_wm(t_philo *philo)
 {
 	if (philo -> common -> dead == NO)
 	{
-		pthread_mutex_unlock(&philo -> common -> die_mutex);
 		return (0);
 	}
+	pthread_mutex_unlock(&philo -> common -> die_mutex);
 	return (1);
 }

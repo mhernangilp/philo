@@ -30,6 +30,11 @@ int	main(int argc, char **argv)
 	philos = initialize_philos(n_philo, argv);
 	if (!philos)
 		return (2);
+	if (n_philo == 1)
+	{
+		printf("%d %d died\n", philos -> common -> time_to_die, 1);
+		return (0);
+	}
 	if (create_threads(philos, n_philo))
 		return (3);
 	if (join_threads(philos, n_philo))
