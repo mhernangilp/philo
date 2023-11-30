@@ -57,7 +57,7 @@ void		*start(void *arg);
 //activites.c
 void	ph_eat(t_philo *philo);
 void	ph_sleep(t_philo *philo);
-void	ph_think(t_philo *philo);
+void	ph_think(t_philo *philo, int start);
 void	check_death(t_philo *philo);
 int	dead(t_philo *philo);
 

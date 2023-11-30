@@ -1,7 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   activities.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhernang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/30 16:37:16 by mhernang          #+#    #+#             */
+/*   Updated: 2023/11/30 16:49:06 by mhernang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../philo.h"
-#include <pthread.h>
-#include <time.h>
-#include <unistd.h>
 
 static int	dead_wm(t_philo *philo);
 
@@ -59,14 +68,17 @@ void	ph_sleep(t_philo *philo)
 	}
 }
 
-void	ph_think(t_philo *philo)
+void	ph_think(t_philo *philo, int start)
 {
 	long int	start_time;
 
 	start_time = philo -> common -> start_time;
-	pthread_mutex_lock(&philo -> common -> write_mutex);
-	printf("%ld %d is thinking\n", get_time() - start_time, philo -> id);
-	pthread_mutex_unlock(&philo -> common -> write_mutex);
+	if (!start)
+	{
+		pthread_mutex_lock(&philo -> common -> write_mutex);
+		printf("%ld %d is thinking\n", get_time() - start_time, philo -> id);
+		pthread_mutex_unlock(&philo -> common -> write_mutex);
+	}
 	while (!is_fork_free(philo) && !dead(philo))
 	{
 		check_death(philo);

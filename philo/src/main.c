@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhernang <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/30 16:37:30 by mhernang          #+#    #+#             */
+/*   Updated: 2023/11/30 16:37:32 by mhernang         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../philo.h"
-#include <bits/pthreadtypes.h>
-#include <stdlib.h>
 
 static int	create_threads(t_philo *philos, int n_philos);
 static int	join_threads(t_philo *philos, int n_philos);
