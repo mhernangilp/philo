@@ -33,11 +33,11 @@ t_philo	*initialize_philos(int n_philo, char **argv)
 		philos[i].ms_eaten = 0;
 		philos[i].common = common;
 		philos[i].common -> n_eaten[i] = 0;
-		philos[i].r_fork = FREE;
+		philos[i].l_fork = FREE;
 		if (i != n_philo - 1)
-			philos[i].l_fork = &philos[i + 1].r_fork;
+			philos[i].r_fork = &philos[i + 1].l_fork;
 		else
-			philos[i].l_fork = &philos[0].r_fork;
+			philos[i].r_fork = &philos[0].l_fork;
 	}
 	return (philos);
 }

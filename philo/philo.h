@@ -40,8 +40,8 @@ typedef struct s_philo
 	int		id;
 	pthread_t	thread;
 	int		ms_eaten;
-	e_fork		r_fork;
-	e_fork		*l_fork;
+	e_fork		l_fork;
+	e_fork		*r_fork;
 	t_common	*common;
 }	t_philo;
 

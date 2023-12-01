@@ -24,8 +24,8 @@ void	ph_eat(t_philo *philo)
 	pthread_mutex_lock(&philo -> common -> write_mutex);
 	printf("%ld %d has taken a fork\n", get_time() - start_time,
 		philo -> id);
-	philo -> r_fork = USED;
-	*philo -> l_fork = USED;
+	philo -> l_fork = USED;
+	*philo -> r_fork = USED;
 	printf("%ld %d is eating\n", get_time() - start_time,
 		philo -> id);
 	pthread_mutex_unlock(&philo -> common -> write_mutex);
@@ -45,8 +45,8 @@ void	ph_eat(t_philo *philo)
 		usleep(500);
 	}
 	pthread_mutex_lock(&philo -> common -> fork_mutex);
-	philo -> r_fork = FREE;
-	*philo -> l_fork = FREE;
+	philo -> l_fork = FREE;
+	*philo -> r_fork = FREE;
 	pthread_mutex_unlock(&philo -> common -> fork_mutex);
 }
 
@@ -123,6 +123,5 @@ static int	dead_wm(t_philo *philo)
 	{
 		return (0);
 	}
-	pthread_mutex_unlock(&philo -> common -> die_mutex);
 	return (1);
 }

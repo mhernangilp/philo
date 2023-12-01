@@ -36,7 +36,7 @@ void	check_full(t_philo *philo)
 int	is_fork_free(t_philo *philo)
 {
 	pthread_mutex_lock(&philo -> common -> fork_mutex);
-	if (*philo -> l_fork == FREE && philo -> r_fork == FREE
+	if (*philo -> r_fork == FREE && philo -> l_fork == FREE
 		&& !dead(philo))
 	{
 		return (1);

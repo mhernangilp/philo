@@ -17,16 +17,7 @@ void	*start(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	if (philo -> id % 2 == 0 || (philo -> common -> n_philo % 2 == 1
-		&& philo -> id == 1))
-	{
-		usleep(500);
-		ph_think(philo, 1);
-	}
-	else
-	{
-		pthread_mutex_lock(&philo -> common -> fork_mutex);
-	}
+	ph_think(philo, 1);
 	while (!dead(philo))
 	{
 		if (!dead(philo))
