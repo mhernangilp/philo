@@ -6,7 +6,7 @@ INCLUDE = ./philo.h
 
 CC = gcc -pthread
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread -g3
+CFLAGS = -Wall -Wextra -Werror
 
 %.o: %.c
 	${CC} ${CFLAGS} -pthread -c $< -o $@
