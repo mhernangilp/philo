@@ -16,6 +16,10 @@
 
 ---
 
+<p align="center">
+	<img width="250" alt="screenshot" src="https://github.com/mhernangilp/philo/assets/123759990/92442bb5-faf2-4f64-a200-67c8c5262ebb">
+</p>
+
 ## 💡 About the project
 
 > _In this project, you will learn the basic principles of threading a process.
